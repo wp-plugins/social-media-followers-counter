@@ -1,11 +1,11 @@
 <?php
 /*
- * Plugin Name: Social Media Followers Counter
+ * Plugin Name: WEN's Social Media Followers Counter
  * Version: 1.0
- * Plugin URI: #
- * Description: Display Likes of Facebook page, Followers of Twitter, Circles of Google Plus and Subscribers of Youtube.
- * Author: Manesh Timilsina
- * Author URI: http://manesh.com.np/
+ * Plugin URI: http://wordpress.org/plugins/social-media-followers-counter
+ * Description: A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus and subscribers of Youtube . Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
+ * Author: Web Experts Nepal, Manesh Timilsina
+ * Author URI: http://webexpertsnepal.com
  * License: GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 class FollowerCounterWidget extends WP_Widget
@@ -106,7 +106,7 @@ class FollowerCounterWidget extends WP_Widget
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('title') . '">' . __('Title:') . ' <input style="width: 220px;" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . $title . '" /></label></p>';		
 		
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_page_url') . '">' . __('Facebook Page Url:') . ' <input style="width: 220px;" id="' . $this->get_field_id('facebook_page_url') . '" name="' . $this->get_field_name('facebook_page_url') . '" type="text" value="' . $facebook . '" /></label>
-	<span style="font-size:10px; font-style: italic;">'.__('Example: http://www.facebook.com/micropeak ').'</span>
+	<span style="font-size:10px; font-style: italic;">'.__('Example: http://www.facebook.com/webexpertsnepal ').'</span>
 	</p>';
 	
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_text') . '">' . __('Facebook Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('facebook_text') . '" name="' . $this->get_field_name('facebook_text') . '" type="text" value="' . $facebook_text . '" /></label>
@@ -115,13 +115,13 @@ class FollowerCounterWidget extends WP_Widget
 	
 	echo '<hr></hr>';
 	?>
-    <p>
-	<label for="<?php echo $this->get_field_id('twitter_id'); ?>">Twitter Username:</label>
-	<input class="widefat" style="width: 220px;" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" />	
-	<span style="font-size:10px; font-style: italic;"><?php echo __('Example: micropeak '); ?></span>
-	</p>
+    	<p>
+        <label for="<?php echo $this->get_field_id('twitter_id'); ?>">Twitter Username:</label>
+        <input class="widefat" style="width: 220px;" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" />	
+		<span style="font-size:10px; font-style: italic;"><?php echo __('Example: webexpertsnepal '); ?></span>
+		</p>
 	
-    <p>
+    	<p>
 			<label for="<?php echo $this->get_field_id('consumer_key'); ?>">Consumer Key:</label>
 			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('consumer_key'); ?>" name="<?php echo $this->get_field_name('consumer_key'); ?>" value="<?php echo $instance['consumer_key']; ?>" />
 		</p>
@@ -144,13 +144,13 @@ class FollowerCounterWidget extends WP_Widget
 		
     <?php
 	
-	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('twitter_text') . '">' . __('Twitter Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('twitter_text') . '" name="' . $this->get_field_name('twitter_text') . '" type="text" value="' . $twitter_text . '" /></label>
-	<span style="font-size:10px; font-style: italic;">'.__('Example: fans, recommendations, followers, etc ').'</span>
-	</p>';
+		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('twitter_text') . '">' . __('Twitter Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('twitter_text') . '" name="' . $this->get_field_name('twitter_text') . '" type="text" value="' . $twitter_text . '" /></label>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: fans, recommendations, followers, etc ').'</span>
+		</p>';
 	
-	echo '<hr></hr>';
+		echo '<hr></hr>';
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('gplus_id') . '">' . __('Google+ ID:') . ' <input style="width: 220px;" id="' . $this->get_field_id('gplus_id') . '" name="' . $this->get_field_name('gplus_id') . '" type="text" value="' . $gplus . '" /></label>
-		<span style="font-size:10px; font-style: italic;">'.__('Example: 113470637409102089159').'</span>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: 1119803292890650').'</span>
 		</p>';
 		
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('gplus_text') . '">' . __('Google+ Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('gplus_text') . '" name="' . $this->get_field_name('gplus_text') . '" type="text" value="' . $gplus_text . '" /></label>
@@ -159,7 +159,7 @@ class FollowerCounterWidget extends WP_Widget
 		
 		echo '<hr></hr>';
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('yt_id') . '">' . __('Youtube Username:') . ' <input style="width: 220px;" id="' . $this->get_field_id('yt_id') . '" name="' . $this->get_field_name('yt_id') . '" type="text" value="' . $yt . '" /></label>
-		<span style="font-size:10px; font-style: italic;">'.__('Example: maneshtimilsina').'</span>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: bZYue9JEA0aa0ekaNvA').'</span>
 		</p>';
 		
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('yt_text') . '">' . __('Youtube Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('yt_text') . '" name="' . $this->get_field_name('yt_text') . '" type="text" value="' . $yt_text . '" /></label>
@@ -198,13 +198,13 @@ class FollowerCounterWidget extends WP_Widget
 	
 	
 
-public function scEnqueueStyles()
-		{
-			wp_register_style('SC_styles', plugins_url('/css/style.css', __FILE__), array(), $this->version, 'all');
-			wp_enqueue_style('SC_styles');
-		}
-
-}// END class
+	public function scEnqueueStyles()
+			{
+				wp_register_style('SC_styles', plugins_url('/css/style.css', __FILE__), array(), $this->version, 'all');
+				wp_enqueue_style('SC_styles');
+			}
+	
+	}// END class
 	
 	/**
 	* Register  widget.
@@ -212,50 +212,49 @@ public function scEnqueueStyles()
 	* Calls 'widgets_init' action after widget has been registered.
 	*/
 	function FollowerCounterInit() {
-	register_widget('FollowerCounterWidget');
+		register_widget('FollowerCounterWidget');
 	}	
 	add_action('widgets_init', 'FollowerCounterInit');
 	
-	
-	
 	function facebook_like_count($page_link){
-	$url = str_replace('https://www.facebook.com/', '', $page_link);
-
-	$curl_url = 'https://graph.facebook.com/' . $url;
-	try{
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, $curl_url);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	$result = curl_exec($ch);
-	$results = json_decode($result, true);
-	curl_close($ch);
-	if(array_key_exists( 'error', $results)){
-	$flc_message = 'Error - '.$results['error']['message'];
-	return $flc_message;
+		$url = str_replace('https://www.facebook.com/', '', $page_link);
+	
+		$curl_url = 'https://graph.facebook.com/' . $url;
+		try{
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $curl_url);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		$result = curl_exec($ch);
+		$results = json_decode($result, true);
+		curl_close($ch);
+		if(array_key_exists( 'error', $results)){
+		$flc_message = 'Error - '.$results['error']['message'];
+		return $flc_message;
 	}
 	else{
-	update_option('flc_fb_like_count', $results['likes']);
-	$flc_message = 'Like count updated';
-	return (int)$results['likes'];
+		update_option('flc_fb_like_count', $results['likes']);
+		$flc_message = 'Like count updated';
+		return (int)$results['likes'];
 	}
 	}
 	catch( Exception $e){
 	$flc_message = $e->getMessage();
 	} 
 
-}
+	}
+	
 	function tweet_count($twitter_id, $consumer_key, $consumer_secret, $access_token, $access_token_secret ){
-$twitter_id = $twitter_id;		
-$consumer_key = $consumer_key;
-$consumer_secret = $consumer_secret;
-$access_token = $access_token;
-$access_token_secret = $access_token_secret;
+	$twitter_id = $twitter_id;		
+	$consumer_key = $consumer_key;
+	$consumer_secret = $consumer_secret;
+	$access_token = $access_token;
+	$access_token_secret = $access_token_secret;
 
 
-if($twitter_id && $consumer_key && $consumer_secret && $access_token && $access_token_secret) { 
+	if($twitter_id && $consumer_key && $consumer_secret && $access_token && $access_token_secret) { 
 
 		$transName = 'list_tweets_'.$args['widget_id'];
 		$cacheTime = 10;
@@ -289,25 +288,16 @@ if($twitter_id && $consumer_key && $consumer_secret && $access_token && $access_
 		
 		if($twitter && is_array($twitter)) {
 			$count = $twitter[0]->user->followers_count;
-			
 			return $count;
-			
-		
-		
 		 }}
-		
-	
-	
-	
-	
 	}
 
 
 
 function google_plus_count($id)
 	{
-		
 		$link = "https://plus.google.com/u/0/".$id."/posts?hl=en";
+		
 		$data = file_get_contents("$link");
 		
 		preg_match('/<span role="button" class="a-n S1xjN" tabindex="0">(.*?)<\/span>/s', $data, $followers);
@@ -343,17 +333,18 @@ function google_plus_count($id)
 		return $circles1;
 	}
 	
-function get_yt_subs($uname) { 
-	
-	$link = "http://gdata.youtube.com/feeds/api/users/".$uname;
+	function get_yt_subs($uname) { 
+		
+		$link = "http://gdata.youtube.com/feeds/api/users/".$uname;
+		
 		$xmlData = file_get_contents("$link");
- 
-$xmlData = str_replace('yt:', 'yt', $xmlData); 
-
-$xml = new SimpleXMLElement($xmlData); 
-
-$subs = $xml->ytstatistics['subscriberCount']; 
-
-return($subs);
- }
+		 
+		$xmlData = str_replace('yt:', 'yt', $xmlData); 
+		
+		$xml = new SimpleXMLElement($xmlData); 
+		
+		$subs = $xml->ytstatistics['subscriberCount']; 
+		
+		return($subs);
+	 }
 ?>
