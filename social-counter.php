@@ -110,7 +110,7 @@ class FollowerCounterWidget extends WP_Widget
 	</p>';
 	
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_text') . '">' . __('Facebook Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('facebook_text') . '" name="' . $this->get_field_name('facebook_text') . '" type="text" value="' . $facebook_text . '" /></label>
-	<span style="font-size:10px; font-style: italic;">'.__('Example: fans, recommendations, followers, etc ').'</span>
+	<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , etc ').'</span>
 	</p>';
 	
 	echo '<hr></hr>';
@@ -118,7 +118,7 @@ class FollowerCounterWidget extends WP_Widget
     	<p>
         <label for="<?php echo $this->get_field_id('twitter_id'); ?>">Twitter Username:</label>
         <input class="widefat" style="width: 220px;" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" />	
-		<span style="font-size:10px; font-style: italic;"><?php echo __('Example: webexpertsnepal '); ?></span>
+		<span style="font-size:10px; font-style: italic;"><?php echo __('Example: webexpertsnepal'); ?></span>
 		</p>
 	
     	<p>
@@ -145,7 +145,7 @@ class FollowerCounterWidget extends WP_Widget
     <?php
 	
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('twitter_text') . '">' . __('Twitter Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('twitter_text') . '" name="' . $this->get_field_name('twitter_text') . '" type="text" value="' . $twitter_text . '" /></label>
-		<span style="font-size:10px; font-style: italic;">'.__('Example: fans, recommendations, followers, etc ').'</span>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , etc').'</span>
 		</p>';
 	
 		echo '<hr></hr>';
@@ -154,7 +154,7 @@ class FollowerCounterWidget extends WP_Widget
 		</p>';
 		
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('gplus_text') . '">' . __('Google+ Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('gplus_text') . '" name="' . $this->get_field_name('gplus_text') . '" type="text" value="' . $gplus_text . '" /></label>
-		<span style="font-size:10px; font-style: italic;">'.__('Example: fans, circles, followers, etc ').'</span>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , etc').'</span>
 		</p>';
 		
 		echo '<hr></hr>';
@@ -163,7 +163,7 @@ class FollowerCounterWidget extends WP_Widget
 		</p>';
 		
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('yt_text') . '">' . __('Youtube Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('yt_text') . '" name="' . $this->get_field_name('yt_text') . '" type="text" value="' . $yt_text . '" /></label>
-		<span style="font-size:10px; font-style: italic;">'.__('Example: fans, Subscriptions, Subscribers, etc ').'</span>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , etc').'</span>
 		</p>';
 		
 	
