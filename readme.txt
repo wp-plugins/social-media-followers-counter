@@ -1,6 +1,6 @@
 === Social media follower counter ===
 Contributors: Web Experts Nepal, Manesh Timilsina
-Donate link: #
+Donate link: http://webexpertsnepal.com
 Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers
 Requires at least: 3.0
 Tested up to: 3.5.1
