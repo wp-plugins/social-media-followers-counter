@@ -44,7 +44,7 @@ Yes. You can overrite icons from your css files
 
 = Can I display only facebook and twitter in my widget? =
 
-Yes. Provide the link for only those item you likke to display. Leave the remaining field blank
+Yes. Provide the link for only those item you like to display. Leave the remaining field blank
 
 = Can I display my custom text below each icon? =
 
