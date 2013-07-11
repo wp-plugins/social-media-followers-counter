@@ -114,35 +114,22 @@ class FollowerCounterWidget extends WP_Widget
 	</p>';
 	
 	echo '<hr></hr>';
-	?>
-    	<p>
-        <label for="<?php echo $this->get_field_id('twitter_id'); ?>">Twitter Username:</label>
-        <input class="widefat" style="width: 220px;" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" />	
-		<span style="font-size:10px; font-style: italic;"><?php echo __('Example: webexpertsnepal'); ?></span>
-		</p>
 	
-    	<p>
-			<label for="<?php echo $this->get_field_id('consumer_key'); ?>">Consumer Key:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('consumer_key'); ?>" name="<?php echo $this->get_field_name('consumer_key'); ?>" value="<?php echo $instance['consumer_key']; ?>" />
-		</p>
-		
-		<p>
-			<label for="<?php echo $this->get_field_id('consumer_secret'); ?>">Consumer Secret:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('consumer_secret'); ?>" name="<?php echo $this->get_field_name('consumer_secret'); ?>" value="<?php echo $instance['consumer_secret']; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('access_token'); ?>">Access Token:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('access_token'); ?>" name="<?php echo $this->get_field_name('access_token'); ?>" value="<?php echo $instance['access_token']; ?>" />
-		</p>
-
-		<p>
-			<label for="<?php echo $this->get_field_id('access_token_secret'); ?>">Access Token Secret:</label>
-			<input class="widefat" style="width: 216px;" id="<?php echo $this->get_field_id('access_token_secret'); ?>" name="<?php echo $this->get_field_name('access_token_secret'); ?>" value="<?php echo $instance['access_token_secret']; ?>" />
-		</p>
-		
-		
-    <?php
+	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('twitter_id') . '">' . __('Twitter Username:') . ' <input style="width: 220px;" id="' . $this->get_field_id('twitter_id') . '" name="' . $this->get_field_name('twitter_id') . '" type="text" value="' . $instance['twitter_id'] . '" /></label>
+	<span style="font-size:10px; font-style: italic;">'.__('Example: webexpertsnepal ').'</span>
+	</p>';
+	
+	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('consumer_key') . '">' . __('Consumer Key:') . ' <input style="width: 220px;" id="' . $this->get_field_id('consumer_key') . '" name="' . $this->get_field_name('consumer_key') . '" type="text" value="' . $instance['consumer_key'] . '" /></label>
+	</p>';
+	
+	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('consumer_secret') . '">' . __('Consumer Secret:') . ' <input style="width: 220px;" id="' . $this->get_field_id('consumer_secret') . '" name="' . $this->get_field_name('consumer_secret') . '" type="text" value="' . $instance['consumer_secret'] . '" /></label>
+	</p>';
+	
+	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('access_token') . '">' . __('Access Token:') . ' <input style="width: 220px;" id="' . $this->get_field_id('access_token') . '" name="' . $this->get_field_name('access_token') . '" type="text" value="' . $instance['access_token'] . '" /></label>
+	</p>';
+	
+	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('access_token_secret') . '">' . __('Access Token Secret:') . ' <input style="width: 220px;" id="' . $this->get_field_id('access_token_secret') . '" name="' . $this->get_field_name('access_token_secret') . '" type="text" value="' . $instance['access_token_secret'] . '" /></label>
+	</p>';
 	
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('twitter_text') . '">' . __('Twitter Counter Text:') . ' <input style="width: 220px;" id="' . $this->get_field_id('twitter_text') . '" name="' . $this->get_field_name('twitter_text') . '" type="text" value="' . $twitter_text . '" /></label>
 		<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , etc').'</span>
@@ -294,7 +281,7 @@ class FollowerCounterWidget extends WP_Widget
 
 
 
-function google_plus_count($id)
+	function google_plus_count($id)
 	{
 		$link = "https://plus.google.com/u/0/".$id."/posts?hl=en";
 		
