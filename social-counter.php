@@ -282,43 +282,49 @@ class FollowerCounterWidget extends WP_Widget
 
 
 	function google_plus_count($id)
-	{
-		$link = "https://plus.google.com/u/0/".$id."/posts?hl=en";
-		
-		$data = file_get_contents("$link");
-		
-		preg_match('/<span role="button" class="a-n S1xjN" tabindex="0">(.*?)<\/span>/s', $data, $followers);
- 
-		if (isset($followers) && !empty($followers))
+
 		{
-			$count = $followers[1];
-			$circles1 = preg_replace('/[^0-9_]/', '', $count);
+
+			$link = "https://plus.google.com/".$id;
+
+			$gplus = array(
+	                'method'    => 'POST',
+	                'sslverify' => false,
+	                'timeout'   => 30,
+	                'headers'   => array( 'Content-Type' => 'application/json' ),
+	                'body'      => '[{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' . $link . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}]'
+	            );
+
+	           
+	        $remote_data = wp_remote_get( 'https://clients6.google.com/rpc', $gplus );            
+
+	        $json_data = json_decode( $remote_data['body'], true );
+
+	        foreach($json_data[0]['result']['metadata']['globalCounts'] as $gcount){
+	                	
+	        $gresult .= $gcount;
+
+	        }
+
+	        if( 0 != $gcount){
+
+	        	return $gcount; 
+
+	        } else {
+
+	        $link = "https://plus.google.com/".$id."/posts";		
+
+			$page = file_get_contents($link);
+
+			if (preg_match('/>([0-9,]+) people</i', $page, $matches)) {
+			
+			return str_replace(',', '', $matches[1]);
+
+			}
+
+	        }
+
 		}
-		if (empty($circles))
-		{
-			$circles = 0;
-		}
- 
-		// 'in x circles' element
-		preg_match('/<span role="button" class="a-n Cl7aRc" tabindex="0">(.*?)<\/span>/s', $data, $following);
- 
-		if (isset($following) && !empty($following))
-		{
-			$count = $following[1];
-			$circles2 = preg_replace('/[^0-9_]/', '', $count);
-		}
-		if (empty($circles))
-		{
-			$circles = 0;
-		}
- 
- 
- 
-		$return = array('followers' => @$circles1, 
-				'following' => @$circles2
-				);
-		return $circles1;
-	}
 	
 	function get_yt_subs($uname) { 
 		
