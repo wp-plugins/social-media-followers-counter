@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: WEN's Social Media Followers Counter
- * Version: 1.0
+ * Version: 1.1.0
  * Plugin URI: http://wordpress.org/plugins/social-media-followers-counter
  * Description: A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus and subscribers of Youtube . Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
  * Author: Web Experts Nepal, Manesh Timilsina
