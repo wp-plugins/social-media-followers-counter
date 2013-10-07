@@ -2,6 +2,7 @@
 Contributors: webexpertsnepal, maneshtimilsina 
 Donate link: 
 Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers
+Version: 1.1.0
 Requires at least: 3.0
 Tested up to: 3.6
 Stable tag: trunk
@@ -55,5 +56,8 @@ Yes. Find the text field in your widget to have your custom text
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 First publicly distributable version
+
+= 1.1.0 =
+Google+ counter updated. It works in two way, if number of follower is greater than zero it display follower count else if number of follower is zero it display count from people in circle. 
