@@ -15,6 +15,7 @@ class FollowerCounterWidget extends WP_Widget
 	*
 	*/
 	function FollowerCounterWidget(){
+		global $control_ops;
 		add_action('wp_enqueue_scripts', array(&$this, 'scEnqueueStyles'));
 		$widget_ops = array('classname' => 'widget_FollowerCounter', 'description' => __( "Display Followers of Facebook, Twitter and Google Plus") );
 		
