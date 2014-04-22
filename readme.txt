@@ -56,11 +56,11 @@ Yes. Find the text field in your widget to have your custom text
 
 == Changelog ==
 
-= 1.0.0 =
-First publicly distributable version
+= 2.0.0 =
+Dribbble follower counter added.
 
 = 1.1.0 =
 Google+ counter updated. It works in two way, if number of follower is greater than zero it display follower count else if number of follower is zero it display count from people in circle. 
 
-= 2.0.0 =
-Dribbble follower counter added.
+= 1.0.0 =
+First publicly distributable version
