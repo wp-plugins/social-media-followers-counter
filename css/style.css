@@ -1,0 +1,53 @@
+		.side-socials {
+				overflow: hidden;
+				margin-bottom: 20px;
+				padding-bottom:10px;
+				
+			}
+			.side-socials ul li {
+				float: left;
+				list-style: none;
+			}
+			.side-socials ul li a {
+				display: inline-block;
+				margin: 17px;
+				padding-top: 50px;
+				text-align: center;
+				width: 49px;
+				transition:all 0.3s ease 0s;
+				text-decoration: none;
+				background: url(../images/social-icons.png) no-repeat;
+			}
+			.side-socials ul li p{
+				text-align: center;
+				width: 80px;
+				font-size: 12px;
+			}
+			.side-socials ul li a.side-fb {
+				height: 0;
+			}
+			.side-socials ul li a.side-fb:hover {
+				background-position:0 -52px;
+			}
+			.side-socials ul li a.side-twit {
+				height:0;
+				background-position: -132px 0;
+			}
+			.side-socials ul li a.side-twit:hover {
+			    background-position: -132px -52px;
+			}
+			.side-socials ul li a.side-plus {
+			    background-position: -66px 0;
+			    height: 0;
+			}
+			.side-socials ul li a.side-plus:hover {
+				background-position:-66px -52px;
+			}
+			.side-socials ul li a.side-yt {
+			    background-position: -195px 0;
+			    height: 0;
+			}
+			.side-socials ul li a.side-yt:hover {
+				background-position:-195px -52px;
+			}
+     
