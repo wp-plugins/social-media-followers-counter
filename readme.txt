@@ -58,7 +58,8 @@ Yes. Find the text field in your widget to have your custom text
 
 = 2.0.2 =
 - Author name and donation link updated.
-- Author URL updated
+- Author URL updated.
+- Banner and screenshot moved to assets folder.
 
 = 2.0.1 =
 PHP notices issue solved.
