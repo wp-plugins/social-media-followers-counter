@@ -1,11 +1,11 @@
-﻿=== WEN's Social Media Followers Counter ===
-Contributors: webexpertsnepal, maneshtimilsina 
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CFPNMMYWS3VB2
+﻿=== Social Media Followers Counter ===
+Contributors: maneshtimilsina 
+Donate link: http://manesh.com.np/contact-me/
 Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers
-Version: 2.0.0
+Version: 2.0.2
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 2.0.0
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,13 @@ Yes. Find the text field in your widget to have your custom text
 2. Front View
 
 == Changelog ==
+
+= 2.0.2 =
+- Author name and donation link updated.
+- Author URL updated
+
+= 2.0.1 =
+PHP notices issue solved.
 
 = 2.0.0 =
 Dribbble follower counter added.
