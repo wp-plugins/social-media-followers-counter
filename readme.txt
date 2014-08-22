@@ -1,7 +1,7 @@
 ﻿=== WEN's Social Media Followers Counter ===
 Contributors: maneshtimilsina 
 Donate link: http://manesh.com.np/contact-me/
-Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers
+Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers, follower counter plugin, social, follower counter, plugin, widget, facebook, twitter, google, youtube
 Version: 2.0.2
 Requires at least: 3.0
 Tested up to: 3.9
