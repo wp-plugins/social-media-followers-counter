@@ -5,7 +5,7 @@
  * Plugin URI: http://wordpress.org/plugins/social-media-followers-counter
  * Description: A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus and subscribers of Youtube . Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
  * Author: Manesh Timilsina
- * Author http://manesh.com.np
+ * Author URI: http://manesh.com.np
  * License: GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
 class FollowerCounterWidget extends WP_Widget
