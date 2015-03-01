@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Social Media Followers Counter
- * Version: 2.0.2
+ * Version: 3.0.0
  * Plugin URI: http://wordpress.org/plugins/social-media-followers-counter
  * Description: A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus and subscribers of Youtube . Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
  * Author: Manesh Timilsina
@@ -18,7 +18,7 @@ class FollowerCounterWidget extends WP_Widget
 		global $control_ops;
 		add_action('wp_enqueue_scripts', array(&$this, 'scEnqueueStyles'));
 		$widget_ops = array(
-						'version' =>'2.0.2', 
+						'version' =>'3.0.0', 
 						'classname' => 'widget_FollowerCounter', 
 						'description' => __( "Display Followers of Facebook, Twitter and Google Plus") 
 						);
@@ -118,7 +118,7 @@ class FollowerCounterWidget extends WP_Widget
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('title') . '">' . __('Title:') . ' <input style="width: 100%;" id="' . $this->get_field_id('title') . '" name="' . $this->get_field_name('title') . '" type="text" value="' . $title . '" /></label></p>';		
 		
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_page_url') . '">' . __('Facebook Page Url:') . ' <input style="width: 100%;" id="' . $this->get_field_id('facebook_page_url') . '" name="' . $this->get_field_name('facebook_page_url') . '" type="text" value="' . $facebook . '" /></label>
-	<span style="font-size:10px; font-style: italic;">'.__('Example: http://www.facebook.com/webexpertsnepal ').'</span>
+	<span style="font-size:10px; font-style: italic;">'.__('Example: https://www.facebook.com/maneshtimilsina ').'</span>
 	</p>';
 	
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_text') . '">' . __('Facebook Counter Text:') . ' <input style="width: 100%;" id="' . $this->get_field_id('facebook_text') . '" name="' . $this->get_field_name('facebook_text') . '" type="text" value="' . $facebook_text . '" /></label>
@@ -128,7 +128,7 @@ class FollowerCounterWidget extends WP_Widget
 	echo '<hr></hr>';
 	
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('twitter_id') . '">' . __('Twitter Username:') . ' <input style="width: 100%;" id="' . $this->get_field_id('twitter_id') . '" name="' . $this->get_field_name('twitter_id') . '" type="text" value="' . $instance['twitter_id'] . '" /></label>
-	<span style="font-size:10px; font-style: italic;">'.__('Example: webexpertsnepal ').'</span>
+	<span style="font-size:10px; font-style: italic;">'.__('Example: maneshtimilsina ').'</span>
 	</p>';
 	
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('consumer_key') . '">' . __('Consumer Key:') . ' <input style="width: 100%;" id="' . $this->get_field_id('consumer_key') . '" name="' . $this->get_field_name('consumer_key') . '" type="text" value="' . $instance['consumer_key'] . '" /></label>
@@ -149,7 +149,7 @@ class FollowerCounterWidget extends WP_Widget
 	
 		echo '<hr></hr>';
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('gplus_id') . '">' . __('Google+ ID:') . ' <input style="width: 100%;" id="' . $this->get_field_id('gplus_id') . '" name="' . $this->get_field_name('gplus_id') . '" type="text" value="' . $gplus . '" /></label>
-		<span style="font-size:10px; font-style: italic;">'.__('Example: 1119803292890650').'</span>
+		<span style="font-size:10px; font-style: italic;">'.__('Example: If your page url is: https://plus.google.com/+ManeshTimilsina/posts <br/> Use +ManeshTimilsina').'</span>
 		</p>';
 		
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('gplus_text') . '">' . __('Google+ Counter Text:') . ' <input style="width: 100%;" id="' . $this->get_field_id('gplus_text') . '" name="' . $this->get_field_name('gplus_text') . '" type="text" value="' . $gplus_text . '" /></label>
@@ -304,48 +304,23 @@ class FollowerCounterWidget extends WP_Widget
 
 
 
-	function google_plus_count($id)
+	function google_plus_count($id) {
 
-		{
+			$link = "https://plus.google.com/".$id."/posts";		
 
-			$link = "https://plus.google.com/".$id;
 
-			$gplus = array(
-	                'method'    => 'POST',
-	                'sslverify' => false,
-	                'timeout'   => 30,
-	                'headers'   => array( 'Content-Type' => 'application/json' ),
-	                'body'      => '[{"method":"pos.plusones.get","id":"p","params":{"nolog":true,"id":"' . $link . '","source":"widget","userId":"@viewer","groupId":"@self"},"jsonrpc":"2.0","key":"p","apiVersion":"v1"}]'
-	            );
-
-	           
-	        $remote_data = wp_remote_get( 'https://clients6.google.com/rpc', $gplus );            
-
-	        $json_data = json_decode( $remote_data['body'], true );
-
-	        foreach($json_data[0]['result']['metadata']['globalCounts'] as $gcount){
-	                	
-	        $gresult .= $gcount;
-
-	        }
-
-	        if( 0 != $gcount){
-
-	        	return $gcount; 
-
-	        } else {
-
-	        $link = "https://plus.google.com/".$id."/posts";		
 
 			$page = file_get_contents($link);
 
-			if (preg_match('/>([0-9,]+) people</i', $page, $matches)) {
+
+
+			if (preg_match_all('/>([0-9,]+) people</i', $page, $matches)) {
 			
-			return str_replace(',', '', $matches[1]);
 
-			}
+			return str_replace(',', '', $matches[1][1]);
 
-	        }
+
+			}   
 
 		}
 	
