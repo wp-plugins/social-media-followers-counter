@@ -2,9 +2,9 @@
 Contributors: maneshtimilsina 
 Donate link: http://manesh.com.np/contact-me/
 Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers, follower counter plugin, social, follower counter, plugin, widget, facebook, twitter, google, youtube
-Version: 3.0.0
+Version: 3.1.0
 Requires at least: 3.0
-Tested up to: 4.1.1
+Tested up to: 4.2.2
 Stable tag: 3.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -55,6 +55,9 @@ Yes. Find the text field in your widget to have your custom text
 2. Front View
 
 == Changelog ==
+
+= 3.1.0 =
+- Facebook API updated 
 
 = 3.0.0 =
 - Counter of google plus changed from circle to follower.

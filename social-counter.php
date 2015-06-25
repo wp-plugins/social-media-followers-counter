@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Social Media Followers Counter
- * Version: 3.0.0
+ * Version: 3.1.0
  * Plugin URI: http://wordpress.org/plugins/social-media-followers-counter
  * Description: A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus and subscribers of Youtube . Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
  * Author: Manesh Timilsina
@@ -18,7 +18,7 @@ class FollowerCounterWidget extends WP_Widget
 		global $control_ops;
 		add_action('wp_enqueue_scripts', array(&$this, 'scEnqueueStyles'));
 		$widget_ops = array(
-						'version' =>'3.0.0', 
+						'version' =>'3.1.0', 
 						'classname' => 'widget_FollowerCounter', 
 						'description' => __( "Display Followers of Facebook, Twitter and Google Plus") 
 						);
@@ -33,10 +33,13 @@ class FollowerCounterWidget extends WP_Widget
 	function widget($args, $instance){
 		extract($args);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title']);
-		$facebook 	= $instance['facebook_page_url'];		
-		$gplus 		= $instance['gplus_id'];
-		$yt 		= $instance['yt_id'];
-		$dribbble 	= $instance['dribbble_url'];
+
+		$facebook 		= $instance['facebook_page_url'];
+		$f_access_token = $instance['f_access_token'];
+		$gplus 			= $instance['gplus_id'];
+		$yt 			= $instance['yt_id'];
+		$dribbble 		= $instance['dribbble_url'];
+
 		
 		$facebook_text 	= $instance['facebook_text'];
 		$twitter_text 	= $instance['twitter_text'];
@@ -57,7 +60,9 @@ class FollowerCounterWidget extends WP_Widget
 			<ul>   
 				<?php if(function_exists('curl_init') && !empty($facebook)){ ?>               
 					<li>
-						<a class="side-fb" href="<?php echo $facebook; ?>" target="_blank"><?php echo facebook_like_count($facebook);?></a>							
+
+						<a class="side-fb" href="<?php echo $facebook; ?>" target="_blank"><?php echo facebook_like_count($facebook, $f_access_token);?></a>							
+
 						<p><?php echo $facebook_text; ?></p>
 					</li>
 				<?php } ?>
@@ -120,6 +125,11 @@ class FollowerCounterWidget extends WP_Widget
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_page_url') . '">' . __('Facebook Page Url:') . ' <input style="width: 100%;" id="' . $this->get_field_id('facebook_page_url') . '" name="' . $this->get_field_name('facebook_page_url') . '" type="text" value="' . $facebook . '" /></label>
 	<span style="font-size:10px; font-style: italic;">'.__('Example: https://www.facebook.com/maneshtimilsina ').'</span>
 	</p>';
+
+	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_access_token') . '">' . __('Facebook Access Token:') . ' <input style="width: 100%;" id="' . $this->get_field_id('facebook_access_token') . '" name="' . $this->get_field_name('facebook_access_token') . '" type="text" value="' . $instance['f_access_token'] . '" /></label>
+
+	</p>';
+
 	
 	echo '<p style="text-align:left;"><label for="' . $this->get_field_name('facebook_text') . '">' . __('Facebook Counter Text:') . ' <input style="width: 100%;" id="' . $this->get_field_id('facebook_text') . '" name="' . $this->get_field_name('facebook_text') . '" type="text" value="' . $facebook_text . '" /></label>
 	<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , etc ').'</span>
@@ -185,6 +195,9 @@ class FollowerCounterWidget extends WP_Widget
 		$instance['title'] 				= strip_tags(stripslashes($new_instance['title']));
 		
 		$instance['facebook_page_url'] 	= strip_tags(stripslashes($new_instance['facebook_page_url']));
+
+		$instance['f_access_token'] 	= strip_tags(stripslashes($new_instance['facebook_access_token']));
+
 		$instance['twitter_id'] 		= strip_tags(stripslashes($new_instance['twitter_id']));
 		$instance['gplus_id'] 			= strip_tags(stripslashes($new_instance['gplus_id']));
 		$instance['yt_id'] 				= strip_tags(stripslashes($new_instance['yt_id']));
@@ -226,10 +239,19 @@ class FollowerCounterWidget extends WP_Widget
 	}	
 	add_action('widgets_init', 'FollowerCounterInit');
 	
-	function facebook_like_count($page_link){
+
+	function facebook_like_count($page_link, $f_access_token){		
+		
+		$f_id 		= $page_link;
+
+		$f_access 	= $f_access_token;
+
 		$url = str_replace('https://www.facebook.com/', '', $page_link);
-	
-		$curl_url = 'https://graph.facebook.com/' . $url;
+
+		$curl_url = 'https://graph.facebook.com/v2.2/'.$url.'?access_token='.$f_access;
+
+		
+
 		try{
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $curl_url);
