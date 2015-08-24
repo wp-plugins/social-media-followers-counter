@@ -2,14 +2,14 @@
 Contributors: maneshtimilsina 
 Donate link: http://manesh.com.np/contact-me/
 Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers, follower counter plugin, social, follower counter, plugin, widget, facebook, twitter, google, youtube
-Version: 3.1.0
+Version: 4.0.0
 Requires at least: 3.0
-Tested up to: 4.2.2
-Stable tag: 3.1.0
+Tested up to: 4.3
+Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A social-media follower counter with custom title ; it displays Facebook page likes , Twitter followers , Google's Plus, YouTube subscribers and Dribbble folloers .
+A social-media follower counter with custom title. Tt displays Facebook page likes , Twitter followers , Google's Plus, YouTube subscribers and Dribbble followers.
 
 
 == Description ==
@@ -55,6 +55,12 @@ Yes. Find the text field in your widget to have your custom text
 2. Front View
 
 == Changelog ==
+
+= 4.0.0 =
+- Widget updated
+- Twitter API updated 
+- Youtube API updated
+- Tested upto WordPress 4.3
 
 = 3.1.0 =
 - Facebook API updated 
