@@ -9,7 +9,7 @@ Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A social media follower counter with option to add custom text. It displays likes, followers, subscribers from facebook, twitter, google+, youTube and dribbble.
+Likes and followers counter plugin with option to add custom text. It displays likes & followers from facebook, twitter, google+, youtube & dribbble.
 
 
 == Description ==
