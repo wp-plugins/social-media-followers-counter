@@ -9,7 +9,7 @@ Stable tag: 4.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A social-media follower counter with custom title. Tt displays Facebook page likes , Twitter followers , Google's Plus, YouTube subscribers and Dribbble followers.
+A social media follower counter with option to add custom text. It displays likes, followers, subscribers from facebook, twitter, google+, youTube and dribbble.
 
 
 == Description ==
@@ -58,8 +58,7 @@ Yes. Find the text field in your widget to have your custom text
 
 = 4.0.0 =
 - Widget updated
-- Twitter API updated 
-- Youtube API updated
+- Twitter and Youtube API updated 
 - Tested upto WordPress 4.3
 
 = 3.1.0 =
