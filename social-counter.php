@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name: Social Media Followers Counter
- * Version: 4.0.0
+ * Version: 4.0.1
  * Plugin URI: http://wordpress.org/plugins/social-media-followers-counter
- * Description: A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus and subscribers of Youtube . Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
+ * Description: A social media follower counter and custom text display plugin : This plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus, subscribers of Youtube and followers of Dribbble. Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use.
  * Author: Manesh Timilsina
  * Author URI: http://manesh.com.np
  * License: GNU/GPL http://www.gnu.org/copyleft/gpl.html
@@ -22,7 +22,7 @@ class FollowerCounterWidget extends WP_Widget
 		add_action('wp_enqueue_scripts', array(&$this, 'scEnqueueStyles'));
 
 		$widget_ops = array(
-						'version' =>'3.1.0', 
+						'version' =>'4.0.1', 
 						'classname' => 'widget_FollowerCounter', 
 						'description' => __( "Display Followers of Facebook, Twitter and Google Plus") 
 						);
@@ -45,6 +45,7 @@ class FollowerCounterWidget extends WP_Widget
 		$yt_ch 					= $instance['yt_ch'];
 		$yt_key					= $instance['yt_key'];
 		$dribbble 				= $instance['dribbble_url'];
+		$dribbble_access_token	= $instance['dribbble_access_token'];
 
 		
 		$facebook_text 			= $instance['facebook_text'];
@@ -92,7 +93,7 @@ class FollowerCounterWidget extends WP_Widget
 				<?php } ?>
 				<?php if(!empty($dribbble)){?> 
 					<li>
-						<a class="side-dribbble" href="<?php echo $dribbble; ?>" target="_blank"><?php echo get_dribbble_subs($dribbble);?></a>
+						<a class="side-dribbble" href="<?php echo $dribbble; ?>" target="_blank"><?php echo get_dribbble_subs($dribbble, $dribbble_access_token);?></a>
 						<p><?php echo $dribbble_text; ?></p>
 					</li>
 				<?php } ?>
@@ -131,7 +132,8 @@ class FollowerCounterWidget extends WP_Widget
 						'yt_key'					=> 	'',
 						'yt_text'					=>	'',
 
-						'dribbble_url'				=>	'',						
+						'dribbble_url'				=>	'',		
+						'dribbble_access_token'		=>	'',				
 						'dribbble_text'				=>	'',
 
 					);
@@ -162,6 +164,7 @@ class FollowerCounterWidget extends WP_Widget
 		$yt_text 				= htmlspecialchars($instance['yt_text']);
 
 		$dribbble				= htmlspecialchars($instance['dribbble_url']);
+		$dribbble_access_token	= htmlspecialchars($instance['dribbble_access_token']);
 		$dribbble_text 			= htmlspecialchars($instance['dribbble_text']);
 		
 		# Output the options
@@ -230,6 +233,10 @@ class FollowerCounterWidget extends WP_Widget
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('dribbble_url') . '">' . __('Dribbble Url:') . ' <input style="width: 100%;" id="' . $this->get_field_id('dribbble_url') . '" name="' . $this->get_field_name('dribbble_url') . '" type="text" value="' . $dribbble . '" /></label>
 		<span style="font-size:10px; font-style: italic;">'.__('Example: https://dribbble.com/maneshtimilsina').'</span>
 		</p>';
+
+		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('dribbble_access_token') . '">' . __('Dribbble Access Token:') . ' <input style="width: 100%;" id="' . $this->get_field_id('dribbble_access_token') . '" name="' . $this->get_field_name('dribbble_access_token') . '" type="text" value="' . $dribbble_access_token. '" /></label>
+
+			</p>';
 		
 		echo '<p style="text-align:left;"><label for="' . $this->get_field_name('dribbble_text') . '">' . __('Dribbble Counter Text:') . ' <input style="width: 100%;" id="' . $this->get_field_id('dribbble_text') . '" name="' . $this->get_field_name('dribbble_text') . '" type="text" value="' . $dribbble_text . '" /></label>
 		<span style="font-size:10px; font-style: italic;">'.__('Example: Fans , Followers , Subscribers , Listed, etc').'</span>
@@ -258,6 +265,7 @@ class FollowerCounterWidget extends WP_Widget
 		$instance['yt_text'] 				= strip_tags(stripslashes($new_instance['yt_text']));
 
 		$instance['dribbble_url'] 			= strip_tags(stripslashes($new_instance['dribbble_url']));
+		$instance['dribbble_access_token'] 	= strip_tags(stripslashes($new_instance['dribbble_access_token']));
 		
 		$instance['facebook_text'] 			= strip_tags(stripslashes($new_instance['facebook_text']));
 		$instance['twitter_text'] 			= strip_tags(stripslashes($new_instance['twitter_text']));
@@ -444,15 +452,13 @@ class FollowerCounterWidget extends WP_Widget
 	function get_yt_subs( $uname, $channel, $api_key ) { 
 
 		$id 		= $channel;
-		$key 		= $api_key;
-			
+
+		$key 		= $api_key;			
 
 		$url 		= "https://www.googleapis.com/youtube/v3/channels?part=statistics&id=".$id."&key=".$key;
 
 		$connection = wp_remote_get( $url, array( 'timeout' => 60 ) );
-
-		//print_r($connection);
-
+		
 		if ( is_wp_error( $connection ) || 400 <= $connection['response']['code'] ) {
 
 				$total = 0;
@@ -479,20 +485,26 @@ class FollowerCounterWidget extends WP_Widget
 		return($total);
 	 }
 
-	 function get_dribbble_subs( $page_link ){
+	 function get_dribbble_subs( $page_link, $dribbble_access_token ){
 
-	 	$dribbble = @parse_url($page_link);
+	 	$dribbble 			= @parse_url($page_link);
+
+	 	$dribbble_at 		= $dribbble_access_token;
 
 		if( $dribbble['host'] == 'www.dribbble.com' || $dribbble['host']  == 'dribbble.com' ){	
 
-			$page_name = substr(@parse_url($page_link, PHP_URL_PATH), 1);
+			$page_name 		= substr(@parse_url($page_link, PHP_URL_PATH), 1);
+			
+			@$data_all 		= "https://api.dribbble.com/v1/user?access_token=".$dribbble_at;
 
-			@$data = @json_decode( wp_remote_retrieve_body(wp_remote_get('http://api.dribbble.com/' . $page_name)) );
+			@$data_count 	= file_get_contents($data_all);
 
-			$dribbble_count = $data->followers_count;
+			@$d_data 		= json_decode( $data_count, true );					
+
+			$dribbble_count = $d_data['followers_count'];
 
 		} else {
-			$dribbble_count = _e('Please enter correct Dribbble page url!', 'SC');
+			$dribbble_count = _e('Please enter correct Dribbble page url and access token!', 'SC');
 		}
 
 		return $dribbble_count;

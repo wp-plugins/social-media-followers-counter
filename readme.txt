@@ -2,10 +2,10 @@
 Contributors: maneshtimilsina 
 Donate link: http://manesh.com.np/contact-me/
 Tags: custom likes counter plugin, custom follower counter plugin, custom text for social media, likes of facebook page, followers of twitter, circles of google+, subscribers of youtube, facebook page like, twitter follower, google+ circles, youtube subscribers, follower counter plugin, social, follower counter, plugin, widget, facebook, twitter, google, youtube
-Version: 4.0.0
+Version: 4.0.1
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 4.0.0
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ Yes. Find the text field in your widget to have your custom text
 2. Front View
 
 == Changelog ==
+
+= 4.0.1 =
+- Dribbble API updated 
 
 = 4.0.0 =
 - Widget updated
