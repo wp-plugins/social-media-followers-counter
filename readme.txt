@@ -14,7 +14,7 @@ Followers counter plugin with option to add custom text. It display likes & foll
 
 == Description ==
 
-A social media follower counter and custom text display plugin : this plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus, subscribers of Youtube and followers of Dribbble. Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use .
+A social media follower counter and custom text display plugin : This plugin currently fetch likes of Facebook page, followers of Twitter, circles of Google Plus, subscribers of Youtube and followers of Dribbble. Comes packed with icon sprites and offers a neat display of the statistics . It is easy to setup and convenient to use .
 
 == Installation ==
 
